@@ -38,7 +38,9 @@ def make(path, keep_going):
 def run(CWE, output_dir, timeout, cases):
     # subprocess.Popen([root_dir + "/" + output_dir + "/juliet-run.sh", timeout, root_dir + "/" + output_dir + "/CWE"+str(CWE)+"/"]).wait()
     code = subprocess.Popen([root_dir + "/" + output_dir + "/juliet-run.sh", str(CWE), cases, timeout]).wait()
-    sys.exit(code)if __name__ == "__main__":
+    sys.exit(code)
+
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="build and run Juliet test cases for targeted CWEs")
     parser.add_argument("CWEs", metavar="N", type=int, nargs="*", help="a CWE number to target")
     parser.add_argument("-c", "--clean", action="store_true", help="clean all CMake and make files for the targeted CWEs")
