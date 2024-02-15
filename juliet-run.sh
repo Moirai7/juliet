@@ -52,11 +52,11 @@ run_tests()
   echo "========== STARTING TEST ${TYPE_PATH} $(date) ==========" >> "${TYPE_PATH}.run"
   ALLCASES=($( ls ${TYPE_PATH} ))
   for i in $(echo $TESTCASES | tr "," "\n"); do
-    TESTCASE="${ALLCASES[i]}"
+    TESTCASE="${ALLCASES[i-1]}"
     local TESTCASE_PATH="${TYPE_PATH}/${TESTCASE}"
     timeout "${TIMEOUT}" "${TESTCASE_PATH}" 0 # timeout requires an argument after the command
     #echo "${TESTCASE_PATH} $?" >> "${TYPE_PATH}.run"
-    if [ $? -eq 124 ]; then
+    if [ $? -ne 0 ]; then
 	    echo "timed out"
 	    exit 1
     fi
