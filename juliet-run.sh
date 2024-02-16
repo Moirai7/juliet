@@ -57,6 +57,7 @@ run_tests()
     timeout "${TIMEOUT}" "${TESTCASE_PATH}" 0 # timeout requires an argument after the command
     #echo "${TESTCASE_PATH} $?" >> "${TYPE_PATH}.run"
     if [ $? -ne 0 ]; then
+      echo $TESTCASE
 	    echo "timed out"
 	    exit 1
     fi
