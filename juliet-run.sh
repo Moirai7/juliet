@@ -54,7 +54,7 @@ run_tests()
   for TESTCASE in $(echo $TESTCASES | tr "," "\n"); do
     #TESTCASE="${ALLCASES[i-1]}"
     local TESTCASE_PATH="${TYPE_PATH}/${TESTCASE}"
-    TESTCASE_PATH=`echo $TESTCASE_PATH | tr -d '-r'`
+    TESTCASE_PATH=`echo $TESTCASE_PATH | tr -d '\r'`
     timeout "${TIMEOUT}" "${TESTCASE_PATH}" 0 # timeout requires an argument after the command
     #echo "${TESTCASE_PATH} $?" >> "${TYPE_PATH}.run"
     if [ $? -ne 0 ]; then
